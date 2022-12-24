@@ -28,3 +28,5 @@ docker compose build
 docker compose run --rm web rails db:create
 docker compose up
 
+docker-compose exec web bash
+
