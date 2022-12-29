@@ -5,6 +5,7 @@ target_files = Dir.glob('db/data/**')
 ActiveRecord::Base.connection.execute("TRUNCATE TABLE theoretical_winnings;")
 ActiveRecord::Base.connection.execute("TRUNCATE TABLE events;")
 ActiveRecord::Base.connection.execute("TRUNCATE TABLE loto_sixes;")
+ActiveRecord::Base.connection.execute("TRUNCATE TABLE three_in_six_anticipations;")
 
 TheoreticalWinning.create(grade: 1, winning: 200000000)
 TheoreticalWinning.create(grade: 2, winning: 10000000)
@@ -14,21 +15,8 @@ TheoreticalWinning.create(grade: 5, winning: 1000)
 
 target_files.each do |file|
   CSV.foreach(file, headers: true) do |row|
-    event = Event.new(lottery_id: row['lottery_id'].to_i)
-    event.lottery_date = row['lottery_date'].to_date
-    event.save!
-
-    1.upto(6) do |i|
-      loto_six = LotoSix.new(event: event, priority: i)
-      loto_six.lottery_number = row["number#{i}"].to_i
-      loto_six.is_bonus = false
-      loto_six.save!
-    end
-
-    bonus_number = LotoSix.new(event: event, is_bonus: true)
-    bonus_number.new_record?
-    bonus_number.lottery_number = row["bonus"].to_i
-    bonus_number.priority = 7
-    bonus_number.save!
+    event = Event.create!(lottery_id: row['lottery_id'].to_i, lottery_date: row['lottery_date'].to_date)
+    1.upto(6) { |i| LotoSix.create!(event: event, lottery_number: row["number#{i}"].to_i, priority: i, is_bonus: false) }
+    LotoSix.create!(event: event, lottery_number: row["bonus"].to_i, priority: 7, is_bonus: true)
   end
 end

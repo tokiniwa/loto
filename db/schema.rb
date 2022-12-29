@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_29_114016) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_29_122924) do
   create_table "events", charset: "utf8mb4", force: :cascade do |t|
     t.integer "lottery_id", null: false
     t.date "lottery_date", null: false
@@ -36,6 +36,18 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_29_114016) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["grade"], name: "uidx_theoretical_winnings_01", unique: true
+  end
+
+  create_table "three_in_six_anticipations", charset: "utf8mb4", force: :cascade do |t|
+    t.bigint "event_id", null: false
+    t.bigint "theoretical_winning_id"
+    t.json "past_data_numbers"
+    t.json "previous_numbers"
+    t.json "previous_before_and_behind_numbers"
+    t.json "previous_last_digit_numbers"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "uidx_three_in_six_anticipations_01", unique: true
   end
 
 end

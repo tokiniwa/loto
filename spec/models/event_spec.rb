@@ -4,6 +4,7 @@ RSpec.describe Event, type: :model do
   describe 'リレーション' do
     it { is_expected.to have_many :winning_numbers }
     it { is_expected.to have_one :bonus_number }
+    it { is_expected.to have_one :three_in_six_anticipation }
   end
 
   describe 'バリデーション' do
