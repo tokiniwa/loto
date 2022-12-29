@@ -8,5 +8,23 @@ html
     = csp_meta_tag
     = stylesheet_link_tag "application", "data-turbo-track": "reload"
     = javascript_importmap_tags
+
+    /* bootstrap5 */
+    = stylesheet_link_tag "https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+    = javascript_include_tag "https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+
   body
+    nav class="navbar navbar-expand-lg navbar-dark bg-dark"
+      div class="container-fluid"
+        = link_to "ロト6検証サイト", root_path, class: 'navbar-brand'
+
+        button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+          span class="navbar-toggler-icon"
+
+        div class="collapse navbar-collapse" id="navbarSupportedContent"
+          ul class="navbar-nav me-auto mb-2 mb-lg-0"
+            li class="nav-item"
+              = link_to "テスト", '#', class: 'text-decoration-none link-warning'
+
     = yield
+
