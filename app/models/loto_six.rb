@@ -9,5 +9,7 @@ class LotoSix < ApplicationRecord
                        uniqueness: { scope: [:event_id] }
   validates :is_bonus, inclusion: [true, false]
 
+  scope :winnings, -> { where(is_bonus: false) }
+  scope :bonuses, -> { where(is_bonus: true) }
   scope :priority_order, -> { order(priority: :asc) }
 end

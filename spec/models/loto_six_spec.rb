@@ -23,4 +23,32 @@ RSpec.describe LotoSix, type: :model do
       it { is_expected.to validate_numericality_of(:priority).only_integer.is_greater_than(0).is_less_than(8) }
     end
   end
+
+  describe '.winnings' do
+    subject { described_class.winnings }
+
+    let!(:loto_six1) { create :loto_six, is_bonus: true }
+    let!(:loto_six2) { create :loto_six, is_bonus: false }
+
+    it { is_expected.to eq [loto_six2] }
+  end
+
+  describe '.bonuses' do
+    subject { described_class.bonuses }
+
+    let!(:loto_six1) { create :loto_six, is_bonus: true }
+    let!(:loto_six2) { create :loto_six, is_bonus: false }
+
+    it { is_expected.to eq [loto_six1] }
+  end
+
+  describe '.priority_order' do
+    subject { described_class.priority_order }
+
+    let!(:loto_six1) { create :loto_six, priority: 3 }
+    let!(:loto_six2) { create :loto_six, priority: 1 }
+    let!(:loto_six3) { create :loto_six, priority: 2 }
+
+    it { is_expected.to eq [loto_six2, loto_six3, loto_six1] }
+  end
 end
