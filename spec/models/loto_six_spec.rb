@@ -14,7 +14,6 @@ RSpec.describe LotoSix, type: :model do
       it { is_expected.to validate_presence_of :lottery_date }
       it { is_expected.to validate_presence_of :lottery_number }
       it { is_expected.to validate_presence_of :priority }
-      it { is_expected.to validate_presence_of :is_bonus }
     end
 
     describe 'numericality' do

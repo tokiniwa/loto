@@ -8,7 +8,7 @@ class LotoSix < ApplicationRecord
   validates :priority, presence: true,
                        numericality: { only_integer: true, greater_than: 0, less_than: 8 },
                        uniqueness: { scope: [:lottery_id] }
-  validates :is_bonus, presence: true, inclusion: [true, false]
+  validates :is_bonus, inclusion: [true, false]
 
   scope :priority_order, -> { order(priority: :asc, id: :asc) }
 end
