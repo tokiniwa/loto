@@ -1,14 +1,13 @@
 class LotoSix < ApplicationRecord
-  validates :lottery_id, presence: true,
-                         numericality: { only_integer: true, greater_than: 0 },
-                         uniqueness: { scope: [:lottery_number] }
-  validates :lottery_date, presence: true
+  belongs_to :event
+
   validates :lottery_number, presence: true,
-                             numericality: { only_integer: true, greater_than: 0, less_than: 44 }
+                             numericality: { only_integer: true, greater_than: 0, less_than: 44 },
+                             uniqueness: { scope: [:event_id] }
   validates :priority, presence: true,
                        numericality: { only_integer: true, greater_than: 0, less_than: 8 },
-                       uniqueness: { scope: [:lottery_id] }
+                       uniqueness: { scope: [:event_id] }
   validates :is_bonus, inclusion: [true, false]
 
-  scope :priority_order, -> { order(priority: :asc, id: :asc) }
+  scope :priority_order, -> { order(priority: :asc) }
 end

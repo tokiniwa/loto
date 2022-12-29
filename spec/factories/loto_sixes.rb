@@ -1,7 +1,6 @@
 FactoryBot.define do
   factory :loto_six do
-    sequence(:lottery_id) { |n| n + 1 }
-    lottery_date { Date.today }
+    association :event, strategy: :build
     lottery_number { [*1..43].sample }
     priority { [*1..7].sample }
     is_bonus { false }
