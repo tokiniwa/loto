@@ -1,6 +1,6 @@
 class TopController < ApplicationController
   def index
-    @events = Event.preload([:winning_numbers, :bonus_number])
+    @events = LotoSixEvent.preload(:loto_six_numbers)
                    .lottery_date_order
                    .page(params[:page])
                    .per(10)

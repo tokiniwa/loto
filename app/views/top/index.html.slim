@@ -12,15 +12,13 @@
           th 抽選回
           th 抽選日
           th colspan="6" 本数字
-          th ボーナス数字
       tbody
         - @events.each do |event|
           tr
             td = event.lottery_id
             td = event.lottery_date
-            - event.winning_numbers.each do |winning_number|
-              td = winning_number.lottery_number
-            td = event.bonus_number.lottery_number
+            - event.loto_six_numbers.each do |number|
+              td = number.lottery_number
 
     div class="d-flex justify-content-center"
       = paginate @events, theme: 'bootstrap-5'
