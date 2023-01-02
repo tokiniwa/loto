@@ -23,8 +23,10 @@ html
 
         div class="collapse navbar-collapse" id="navbarSupportedContent"
           ul class="navbar-nav me-auto mb-2 mb-lg-0"
-            li class="nav-item"
-              = link_to "テスト", '#', class: 'text-decoration-none link-warning'
+            li.nav-item
+              /* todo cssを使って間隔は後で修正 */
+              = link_to 'ロト6　', loto_sixes_path, class: 'text-decoration-none link-warning'
 
+            li.nav-item
+              = link_to 'ロト7', loto_sevens_path, class: 'text-decoration-none link-warning'
     = yield
-

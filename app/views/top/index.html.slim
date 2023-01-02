@@ -4,21 +4,3 @@
 
   .mt-lg-1
     div class="d-flex justify-content-center"
-      = page_entries_info @events
-
-    table class="table table-bordered"
-      thead class="table-secondary"
-        tr
-          th 抽選回
-          th 抽選日
-          th colspan="6" 本数字
-      tbody
-        - @events.each do |event|
-          tr
-            td = event.lottery_id
-            td = event.lottery_date
-            - event.loto_six_numbers.each do |number|
-              td = number.lottery_number
-
-    div class="d-flex justify-content-center"
-      = paginate @events, theme: 'bootstrap-5'
