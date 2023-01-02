@@ -17,6 +17,13 @@ RSpec.describe LotoSevenNumberCounting, type: :model do
       it { is_expected.to validate_presence_of :lottery_number5 }
       it { is_expected.to validate_presence_of :lottery_number6 }
       it { is_expected.to validate_presence_of :lottery_number7 }
+      it { is_expected.to validate_presence_of :lottery_number_rate1 }
+      it { is_expected.to validate_presence_of :lottery_number_rate2 }
+      it { is_expected.to validate_presence_of :lottery_number_rate3 }
+      it { is_expected.to validate_presence_of :lottery_number_rate4 }
+      it { is_expected.to validate_presence_of :lottery_number_rate5 }
+      it { is_expected.to validate_presence_of :lottery_number_rate6 }
+      it { is_expected.to validate_presence_of :lottery_number_rate7 }
     end
 
     describe 'numericality' do

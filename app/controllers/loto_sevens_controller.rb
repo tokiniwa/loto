@@ -6,4 +6,11 @@ class LotoSevensController < ApplicationController
                        .page(params[:page])
                        .per(10)
   end
+
+  def frequencies
+    @loto_seven_number_countings = LotoSevenNumberCounting.number_order
+  end
+
+  def predictions
+  end
 end

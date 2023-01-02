@@ -3,7 +3,7 @@ require 'csv'
 # 共通処理
 ActiveRecord::Base.connection.execute("TRUNCATE TABLE loto_events;")
 
-# ロト6のデータ作成
+# ロト6のデータ投入
 target_files = Dir.glob('db/data/loto_six.csv')
 
 ActiveRecord::Base.connection.execute("TRUNCATE TABLE loto_six_numbers;")
@@ -15,10 +15,11 @@ target_files.each do |file|
   end
 end
 
-# ロト7のデータ作成
+# ロト7のデータ投入
 target_files = Dir.glob('db/data/loto_seven.csv')
 
 ActiveRecord::Base.connection.execute("TRUNCATE TABLE loto_seven_numbers;")
+ActiveRecord::Base.connection.execute("TRUNCATE TABLE loto_seven_number_countings;")
 
 target_files.each do |file|
   CSV.foreach(file, headers: true) do |row|
@@ -26,3 +27,8 @@ target_files.each do |file|
     1.upto(7) { |i| LotoSevenNumber.create!(loto_event: event, lottery_number: row["number#{i}"].to_i, priority: i) }
   end
 end
+
+# ロト7のカウンティングデータ投入
+
+1.upto(37) { |i| LotoSevenNumberCounting.create!(number: i) }
+LotoSevenNumberCounting.set_lottery_numbers

@@ -29,6 +29,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_02_042939) do
     t.integer "lottery_number5", default: 0, null: false
     t.integer "lottery_number6", default: 0, null: false
     t.integer "lottery_number7", default: 0, null: false
+    t.float "lottery_number_rate1", default: 0.0, null: false
+    t.float "lottery_number_rate2", default: 0.0, null: false
+    t.float "lottery_number_rate3", default: 0.0, null: false
+    t.float "lottery_number_rate4", default: 0.0, null: false
+    t.float "lottery_number_rate5", default: 0.0, null: false
+    t.float "lottery_number_rate6", default: 0.0, null: false
+    t.float "lottery_number_rate7", default: 0.0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["number"], name: "uidx_loto_seven_number_countings_01", unique: true

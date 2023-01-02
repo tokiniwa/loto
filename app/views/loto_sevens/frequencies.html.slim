@@ -1,0 +1,53 @@
+.container
+  .mt-lg-3
+    h1 ロト7 出現回数一覧
+
+  .mt-lg-1
+    = link_to "ロト7 当選番号一覧", loto_sevens_path
+    br
+    = link_to "ロト7 予測", predictions_loto_sevens_path
+
+  .mt-lg-1
+    table class="table table-bordered"
+      thead class="table-secondary"
+        tr
+          th 数値
+          th 抽選番号1
+          th 抽選番号2
+          th 抽選番号3
+          th 抽選番号4
+          th 抽選番号5
+          th 抽選番号6
+          th 抽選番号7
+      tbody
+        - @loto_seven_number_countings.each do |number_counting|
+          tr
+            td = number_counting.number
+            - if number_counting.lottery_number1 > 0
+              td = "#{number_counting.lottery_number1}(#{number_to_percentage(number_counting.lottery_number_rate1 * 100, precision: 1)})"
+            - else
+              td
+            - if number_counting.lottery_number2 > 0
+              td = "#{number_counting.lottery_number2}(#{number_to_percentage(number_counting.lottery_number_rate2 * 100, precision: 1)})"
+            - else
+              td
+            - if number_counting.lottery_number3 > 0
+              td = "#{number_counting.lottery_number3}(#{number_to_percentage(number_counting.lottery_number_rate3 * 100, precision: 1)})"
+            - else
+              td
+            - if number_counting.lottery_number4 > 0
+              td = "#{number_counting.lottery_number4}(#{number_to_percentage(number_counting.lottery_number_rate4 * 100, precision: 1)})"
+            - else
+              td
+            - if number_counting.lottery_number5 > 0
+              td = "#{number_counting.lottery_number5}(#{number_to_percentage(number_counting.lottery_number_rate5 * 100, precision: 1)})"
+            - else
+              td
+            - if number_counting.lottery_number6 > 0
+              td = "#{number_counting.lottery_number6}(#{number_to_percentage(number_counting.lottery_number_rate6 * 100, precision: 1)})"
+            - else
+              td
+            - if number_counting.lottery_number7 > 0
+              td = "#{number_counting.lottery_number7}(#{number_to_percentage(number_counting.lottery_number_rate7 * 100, precision: 1)})"
+            - else
+              td
