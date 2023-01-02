@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_02_024450) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_02_042939) do
   create_table "loto_events", charset: "utf8mb4", force: :cascade do |t|
     t.integer "lottery_id", null: false
     t.date "lottery_date", null: false
@@ -18,6 +18,20 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_02_024450) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["lottery_id", "lottery_type"], name: "uidx_loto_events_01", unique: true
+  end
+
+  create_table "loto_seven_number_countings", charset: "utf8mb4", force: :cascade do |t|
+    t.integer "number", null: false
+    t.integer "lottery_number1", default: 0, null: false
+    t.integer "lottery_number2", default: 0, null: false
+    t.integer "lottery_number3", default: 0, null: false
+    t.integer "lottery_number4", default: 0, null: false
+    t.integer "lottery_number5", default: 0, null: false
+    t.integer "lottery_number6", default: 0, null: false
+    t.integer "lottery_number7", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["number"], name: "uidx_loto_seven_number_countings_01", unique: true
   end
 
   create_table "loto_seven_numbers", charset: "utf8mb4", force: :cascade do |t|
