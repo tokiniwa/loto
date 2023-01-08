@@ -32,3 +32,7 @@ docker compose up
 
 docker-compose exec web bash
 
+* Loto6 fetch_recommended_numbers
+
+LotoSixNumber.fetch_recommended_numbers 1755(lottery_id)
+LotoSixNumber.fetch_recommended_numbers 1755, past_number: 10, occurrences: [3,4,5,6,7,8,9,10]
